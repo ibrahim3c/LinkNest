@@ -1,0 +1,47 @@
+﻿using ApartmentBooking.Domain.Users;
+using LinkNest.Domain.Abstraction;
+
+namespace LinkNest.Domain.UserProfiles
+{
+    public class UserProfile : Entity
+    {
+        public UserProfile(Guid guid, FirstName firstName, LastName lastName, Email email, DateTime dateOfBirth, DateTime createdOn, CurrentCity currentCity) : base(guid)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            DateOfBirth = dateOfBirth;
+            CreatedOn = createdOn;
+            CurrentCity = currentCity;
+        }
+        // for EF Core
+        private UserProfile() : base() { }
+
+        public string IdentityId {  get; private set; }
+        public FirstName FirstName { get; private set; }
+        public LastName LastName { get; private set; }
+        public Email Email { get; private set; }
+        public DateTime DateOfBirth { get; private set; }
+        public DateTime CreatedOn { get; private set; }
+        public CurrentCity CurrentCity { get; private set; }
+
+        // factory method
+        public static UserProfile Create(FirstName firstName, LastName lastName, Email email,DateTime dateOfBirth,CurrentCity currentCity)
+        {
+            //To Do - validate the parameters & error handling & raise domain events if needed
+
+            var user = new UserProfile(new Guid(), firstName, lastName, email,dateOfBirth,DateTime.UtcNow,currentCity);
+            //user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
+            return user;
+        }
+        public async Task UpdateAsync(FirstName firstName, LastName lastName, Email email, DateTime dateOfBirth, CurrentCity currentCity)
+        {
+            //To Do - validate the parameters & error handling & raise domain events if needed
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            DateOfBirth = dateOfBirth;
+            CurrentCity = currentCity;
+        }
+    }
+}

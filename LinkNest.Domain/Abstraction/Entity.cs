@@ -8,6 +8,7 @@
         {
             Guid = guid;
         }
+        protected Entity() { }
 
         public IReadOnlyList<IDomainEvent> GetDomainEvents() => _events;
         public void RaiseDomainEvent(IDomainEvent domainEvent) => _events.Add(domainEvent);

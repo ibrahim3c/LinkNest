@@ -1,7 +1,7 @@
 ﻿namespace LinkNest.Api.Registers
 {
     //Used to register middleware (UseXyz()) into the WebApplication.
-    public interface IWebApplicationRegisterar
+    public interface IWebApplicationRegistrar
     {
         void RegisterPipelineComponents(WebApplication app);
 

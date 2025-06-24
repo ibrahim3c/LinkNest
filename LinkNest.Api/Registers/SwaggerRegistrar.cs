@@ -1,16 +1,7 @@
 ﻿
 namespace LinkNest.Api.Registers
 {
-    public class SwaggerRegisterar : IWebApplicationBuilderRegisterar,IWebApplicationRegisterar
-    {
-        public void RegisterPipelineComponents(WebApplication app)
-        {
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-        }
+    public class SwaggerRegistrar : IWebApplicationBuilderRegistrar{
 
         public void RegisterServices(WebApplicationBuilder builder)
         {

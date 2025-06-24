@@ -3,7 +3,7 @@ using Asp.Versioning;
 
 namespace LinkNest.Api.Registers
 {
-    public class ApiVersioning : IWebApplicationBuilderRegisterar
+    public class ApiVersioningRegistrar : IWebApplicationBuilderRegistrar
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {

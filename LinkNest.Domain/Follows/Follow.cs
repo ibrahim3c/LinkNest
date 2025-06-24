@@ -2,13 +2,8 @@
 
 namespace LinkNest.Domain.Follows
 {
-    public class Follow : Entity
+    public class Follow(Guid guid, Guid followeeId) : Entity(guid)
     {
-        public Follow(Guid guid, Guid followeeId) : base(guid)
-        {
-            FolloweeId = followeeId;
-        }
-
-        public Guid FolloweeId {  get; private set; }
+        public Guid FolloweeId { get; private set; } = followeeId;
     }
 }

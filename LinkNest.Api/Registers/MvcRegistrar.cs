@@ -1,7 +1,7 @@
 ﻿
 namespace LinkNest.Api.Registers
 {
-    public class MvcRegisterar : IWebApplicationBuilderRegisterar
+    public class MvcRegistrar : IWebApplicationBuilderRegistrar
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {

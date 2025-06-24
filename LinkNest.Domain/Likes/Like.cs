@@ -9,6 +9,7 @@ namespace LinkNest.Domain.Likes
             PostId = postId;
             CreatedAt = createdAt;
         }
+        private Like() { }  
         public Guid PostId { get; private set; }
         public DateTime CreatedAt { get; private set; }= DateTime.Now;
     }

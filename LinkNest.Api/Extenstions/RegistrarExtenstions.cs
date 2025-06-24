@@ -3,15 +3,15 @@ using System.Reflection;
 
 namespace LinkNest.Api.Extenstions
 {
-    public static class RegisterarExtenstions
+    public static class RegistrarExtenstions
     {
         public static void RegisterServicesFromAssembly(this WebApplicationBuilder builder, Assembly assembly)
         {
             var registers = assembly
             .GetTypes()
-                .Where(t => typeof(IWebApplicationBuilderRegisterar).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
+                .Where(t => typeof(IWebApplicationBuilderRegistrar).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
             .Select(Activator.CreateInstance)
-                .Cast<IWebApplicationBuilderRegisterar>();
+                .Cast<IWebApplicationBuilderRegistrar>();
 
             foreach (var register in registers)
             {
@@ -23,9 +23,9 @@ namespace LinkNest.Api.Extenstions
         {
             var registers = assembly
                 .GetTypes()
-                .Where(t => typeof(IWebApplicationRegisterar).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
+                .Where(t => typeof(IWebApplicationRegistrar).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
                 .Select(Activator.CreateInstance)
-                .Cast<IWebApplicationRegisterar>();
+                .Cast<IWebApplicationRegistrar>();
 
             foreach (var register in registers)
             {
