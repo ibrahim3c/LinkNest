@@ -14,9 +14,9 @@ namespace LinkNest.Domain.Posts
         }
         // for EF Core
         private Post() { }
-        public Content Content {  get; private set; }
+        public Content Content { get; private set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
-        public Url ImageUrl {  get; private set; }
+        public Url ImageUrl { get; private set; }
         public Guid UserProfileId { get; private set; }
 
         // Navigation properties
@@ -73,4 +73,5 @@ namespace LinkNest.Domain.Posts
 
 
         }
+    }
 }
