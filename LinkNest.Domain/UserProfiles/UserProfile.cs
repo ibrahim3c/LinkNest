@@ -1,5 +1,7 @@
 ﻿using ApartmentBooking.Domain.Users;
 using LinkNest.Domain.Abstraction;
+using LinkNest.Domain.Follows;
+using LinkNest.Domain.Posts;
 
 namespace LinkNest.Domain.UserProfiles
 {
@@ -17,13 +19,19 @@ namespace LinkNest.Domain.UserProfiles
         // for EF Core
         private UserProfile() : base() { }
 
-        public string IdentityId {  get; private set; }
         public FirstName FirstName { get; private set; }
         public LastName LastName { get; private set; }
-        public Email Email { get; private set; }
+        public UserProfileEmail Email { get; private set; }
         public DateTime DateOfBirth { get; private set; }
         public DateTime CreatedOn { get; private set; }
         public CurrentCity CurrentCity { get; private set; }
+
+        // nav properties
+        public ICollection<Post> Posts { get; private set; } = new List<Post>();
+
+        public ICollection<Follow> Following { get; set; } = new List<Follow>();   // Users this user is following
+        public ICollection<Follow> Followers { get; set; } = new List<Follow>(); // Users who follow this user
+
 
         // factory method
         public static UserProfile Create(FirstName firstName, LastName lastName, Email email,DateTime dateOfBirth,CurrentCity currentCity)
