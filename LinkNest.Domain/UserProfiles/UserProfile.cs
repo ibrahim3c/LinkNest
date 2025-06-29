@@ -7,7 +7,7 @@ namespace LinkNest.Domain.UserProfiles
 {
     public class UserProfile : Entity
     {
-        public UserProfile(Guid guid, FirstName firstName, LastName lastName, Email email, DateTime dateOfBirth, DateTime createdOn, CurrentCity currentCity) : base(guid)
+        public UserProfile(Guid guid, FirstName firstName, LastName lastName, UserProfileEmail email, DateTime dateOfBirth, DateTime createdOn, CurrentCity currentCity) : base(guid)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -34,7 +34,7 @@ namespace LinkNest.Domain.UserProfiles
 
 
         // factory method
-        public static UserProfile Create(FirstName firstName, LastName lastName, Email email,DateTime dateOfBirth,CurrentCity currentCity)
+        public static UserProfile Create(FirstName firstName, LastName lastName, UserProfileEmail email,DateTime dateOfBirth,CurrentCity currentCity)
         {
             //To Do - validate the parameters & error handling & raise domain events if needed
 
@@ -42,7 +42,7 @@ namespace LinkNest.Domain.UserProfiles
             //user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
             return user;
         }
-        public async Task UpdateAsync(FirstName firstName, LastName lastName, Email email, DateTime dateOfBirth, CurrentCity currentCity)
+        public async Task UpdateAsync(FirstName firstName, LastName lastName, UserProfileEmail email, DateTime dateOfBirth, CurrentCity currentCity)
         {
             //To Do - validate the parameters & error handling & raise domain events if needed
             FirstName = firstName;

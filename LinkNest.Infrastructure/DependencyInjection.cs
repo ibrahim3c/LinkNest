@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using LinkNest.Infrastructure.Email;
+﻿using Dapper;
+using LinkNest.Application.Data;
 using LinkNest.Application.Services;
 using LinkNest.Infrastructure.Data;
+using LinkNest.Infrastructure.Email;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LinkNest.Infrastructure
 {
@@ -15,10 +17,19 @@ namespace LinkNest.Infrastructure
 
             services.AddScoped<IEmailService, EmailService>();
 
+            var connectionString = configuration.GetConnectionString("DefaultConnection")
+                ??throw new ArgumentNullException(nameof(configuration));
+
+            #region EFCore
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseInMemoryDatabase("LinkNestDb");
+                options.UseNpgsql(connectionString);
             });
+            #endregion
+
+            #region Dapper
+            services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
+            #endregion
 
             return services;
         }

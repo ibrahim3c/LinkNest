@@ -6,7 +6,7 @@ namespace LinkNest.Domain.Follows
     public class Follow : Entity
     {
         public Guid FollowerId { get; private set; } // who follows
-        public Guid FolloweeId { get; private set; } ; // who is being followed
+        public Guid FolloweeId { get; private set; } // who is being followed
 
         private Follow()
         {
