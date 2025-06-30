@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IRepositories\" />
+    <ProjectReference Include="..\LinkNest.Domain\LinkNest.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿
+using LinkNest.Application;
 using LinkNest.Infrastructure;
 
 namespace LinkNest.Api.Registers
@@ -7,6 +8,7 @@ namespace LinkNest.Api.Registers
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {
+            builder.Services.AddApplicationLayer();
             builder.Services.AddInfrastructure(builder.Configuration);
         }
     }

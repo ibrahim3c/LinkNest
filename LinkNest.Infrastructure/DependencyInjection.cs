@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using LinkNest.Application.Data;
-using LinkNest.Application.Services;
+using LinkNest.Application.Abstraction.Data;
+using LinkNest.Application.Abstraction.IServices.Email;
 using LinkNest.Infrastructure.Data;
 using LinkNest.Infrastructure.Email;
 using Microsoft.EntityFrameworkCore;

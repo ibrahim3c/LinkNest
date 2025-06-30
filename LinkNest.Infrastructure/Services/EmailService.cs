@@ -1,4 +1,4 @@
-﻿using LinkNest.Application.Services;
+﻿using LinkNest.Application.Abstraction.IServices.Email;
 
 namespace LinkNest.Infrastructure.Email
 {

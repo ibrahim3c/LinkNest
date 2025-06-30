@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkNest.Application.Data
+namespace LinkNest.Application.Abstraction.Data
 {
     public interface ISqlConnectionFactory
     {

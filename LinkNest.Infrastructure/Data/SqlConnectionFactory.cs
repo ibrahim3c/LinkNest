@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using LinkNest.Application.Data;
+using LinkNest.Application.Abstraction.Data;
 using Npgsql;
 using System.Data;
 
