@@ -17,4 +17,9 @@
     <ProjectReference Include="..\LinkNest.Domain\LinkNest.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Follows\" />
+    <Folder Include="UserProfiles\" />
+  </ItemGroup>
+
 </Project>
