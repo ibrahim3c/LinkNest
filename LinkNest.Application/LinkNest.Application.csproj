@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Follows\GetAllFolloweesQueryHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
@@ -15,11 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LinkNest.Domain\LinkNest.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Follows\" />
-    <Folder Include="UserProfiles\" />
   </ItemGroup>
 
 </Project>

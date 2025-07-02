@@ -21,9 +21,9 @@ namespace LinkNest.Application.Posts.GetPost
             SELECT 
                 id AS Id,
                 content AS Content,
-                to_char(created_at, 'YYYY-MM-DD HH24:MI:SS') AS CreatedAt,
-                image_url AS ImageUrl,
-                user_profile_id AS UserProfileId
+                createdAt AS CreatedAt,
+                imageUrl AS ImageUrl,
+                userProfile_id AS UserProfileId
             FROM 
                 post
             WHERE 
