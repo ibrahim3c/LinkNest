@@ -22,8 +22,4 @@
     <ProjectReference Include="..\LinkNest.Domain\LinkNest.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

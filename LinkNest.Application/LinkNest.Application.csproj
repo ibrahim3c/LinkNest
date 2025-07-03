@@ -21,4 +21,17 @@
     <ProjectReference Include="..\LinkNest.Domain\LinkNest.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Follows\FollowUserProfile\" />
+    <Folder Include="Follows\UnFollowUserProfile\" />
+    <Folder Include="Posts\AddCommentToPost\" />
+    <Folder Include="Posts\AddInteractionToPost\" />
+    <Folder Include="Posts\AddPost\" />
+    <Folder Include="Posts\DeleteInteractionToPost\" />
+    <Folder Include="Posts\DelteCommentToPost\" />
+    <Folder Include="Posts\UpdateCommentToPost\" />
+    <Folder Include="UserProfiles\AddUserProfile\" />
+    <Folder Include="UserProfiles\UpdateUserProfile\" />
+  </ItemGroup>
+
 </Project>

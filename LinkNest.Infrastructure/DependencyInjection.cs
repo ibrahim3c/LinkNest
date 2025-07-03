@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using LinkNest.Application.Abstraction.Data;
 using LinkNest.Application.Abstraction.IServices.Email;
+using LinkNest.Domain.Abstraction;
 using LinkNest.Infrastructure.Data;
 using LinkNest.Infrastructure.Email;
+using LinkNest.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +33,9 @@ namespace LinkNest.Infrastructure
             services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
             #endregion
 
+            #region Repository Pattern with UOW
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            #endregion
             return services;
         }
     }
