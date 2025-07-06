@@ -30,8 +30,6 @@
     <Folder Include="Posts\DeleteInteractionToPost\" />
     <Folder Include="Posts\DelteCommentToPost\" />
     <Folder Include="Posts\UpdateCommentToPost\" />
-    <Folder Include="UserProfiles\AddUserProfile\" />
-    <Folder Include="UserProfiles\UpdateUserProfile\" />
   </ItemGroup>
 
 </Project>

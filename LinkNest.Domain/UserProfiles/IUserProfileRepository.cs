@@ -7,5 +7,7 @@ namespace LinkNest.Domain.UserProfiles
         Task AddAsync(UserProfile userProfile);
         void Update(UserProfile userProfile);
         Task<UserProfile> GetByIdAsync(Guid userProfileId);
+        Task<bool> IsEmailExist(string email);
+        Task<bool> IsEmailExist(string email, string except);
     }
 }

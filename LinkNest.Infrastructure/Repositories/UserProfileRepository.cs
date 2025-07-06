@@ -1,6 +1,7 @@
 ﻿using LinkNest.Domain.Posts;
 using LinkNest.Domain.UserProfiles;
 using LinkNest.Infrastructure.Data;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkNest.Infrastructure.Repositories
@@ -23,6 +24,15 @@ namespace LinkNest.Infrastructure.Repositories
            return await appDbContext.Set<UserProfile>().FirstOrDefaultAsync(u=>u.Guid==userProfileId);
         }
 
+        public async Task<bool> IsEmailExist(string email)
+        {
+            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email.email == email);
+        }
+
+        public async Task<bool> IsEmailExist(string email,string except)
+        {
+            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email.email == email && u.Email.email != except);
+        }
         public void Update(UserProfile userProfile)
         {
              appDbContext.Set<UserProfile>().Update(userProfile);

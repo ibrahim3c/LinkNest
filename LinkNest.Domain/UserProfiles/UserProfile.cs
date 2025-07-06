@@ -42,7 +42,7 @@ namespace LinkNest.Domain.UserProfiles
             //user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
             return user;
         }
-        public async Task UpdateAsync(FirstName firstName, LastName lastName, UserProfileEmail email, DateTime dateOfBirth, CurrentCity currentCity)
+        public void Update(FirstName firstName, LastName lastName, UserProfileEmail email, DateTime dateOfBirth, CurrentCity currentCity)
         {
             //To Do - validate the parameters & error handling & raise domain events if needed
             FirstName = firstName;
