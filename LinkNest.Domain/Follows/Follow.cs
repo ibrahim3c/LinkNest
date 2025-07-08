@@ -14,10 +14,23 @@ namespace LinkNest.Domain.Follows
         }
         public Follow(Guid id, Guid followerId, Guid followeeId):base(id) 
         {
+            if (followerId == followeeId)
+                throw new ArgumentException("User cannot follow themselves.");
+
             this.FollowerId = followerId;
             this.FolloweeId = followeeId;
         }
+
+        public static Follow Create(Guid followerId, Guid followeeId)
+        {
+            return new Follow
+            {
+                FolloweeId = followerId,
+                FollowerId = followerId
+            };
+        }
         public UserProfile Follower {  get; private set; }
         public UserProfile Followee {  get; private set; }
+
     }
 }

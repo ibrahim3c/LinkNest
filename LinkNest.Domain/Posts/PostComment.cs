@@ -20,5 +20,15 @@ namespace LinkNest.Domain.Posts
         public Post Post { get; private set; } = null!; // Ensures Post is not null after initialization
 
 
+        public static PostComment Create(Content content,Guid postId, Guid userProfileId)
+        {
+            return new PostComment
+            {
+                Content = content,
+                CreatedAt = DateTime.UtcNow,
+                UserProfileId = userProfileId,
+                PostId=postId
+            };
+        }
     }
 }

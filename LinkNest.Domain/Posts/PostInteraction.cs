@@ -4,12 +4,12 @@ namespace LinkNest.Domain.Posts
 {
     public class PostInteraction : Entity
     {
-        public PostInteraction(Guid guid, Guid postId,Guid userProfileId,DateTime createdAt,InteractionTypes interactionTypes) : base(guid)
+        public PostInteraction(Guid guid, Guid postId,Guid userProfileId,DateTime createdAt,InteractionTypes interactionType) : base(guid)
         {
             PostId = postId;
             UserProfileId = userProfileId;
             CreatedAt = createdAt;
-            InteractionType = interactionTypes;
+            InteractionType = interactionType;
         }
         private PostInteraction() { }
         public Guid PostId { get; private set; }
@@ -19,6 +19,15 @@ namespace LinkNest.Domain.Posts
         // Navigation properties
         public Post Post { get; private set; } = null!; // Ensures Post is not null after initialization
 
-
+        public static PostInteraction Create(Guid postId, Guid userProfileId, InteractionTypes interactionType)
+        {
+            return new PostInteraction
+            {
+                CreatedAt = DateTime.UtcNow,
+                PostId = postId,
+                InteractionType = interactionType,
+                UserProfileId = userProfileId
+            };
+        }
     }
 }

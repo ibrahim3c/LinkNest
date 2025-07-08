@@ -24,12 +24,12 @@ namespace LinkNest.Domain.Posts
         public ICollection<PostInteraction> Interactions { get; private set; } = new List<PostInteraction>();
 
         // Factory method to create a new Post instance
-        public static Post Create(Content content, DateTime createdAt, Url imageUrl, Guid userProfileId)
+        public static Post Create(Content content,  Url imageUrl, Guid userProfileId)
         {
             // TODO: Validate parameters as needed and raise domain events or perform additional logic if needed
-            var post = new Post(Guid.NewGuid(), content, createdAt, imageUrl, userProfileId);
+            var post = new Post(Guid.NewGuid(), content, DateTime.UtcNow, imageUrl, userProfileId);
 
-            post.RaiseDomainEvent(new PostCreatedEvent(post.Guid, content, createdAt, imageUrl, userProfileId));
+            //post.RaiseDomainEvent(new PostCreatedEvent(post.Guid, content,DateTime.UtcNow, imageUrl, userProfileId));
             return post;
 
         }

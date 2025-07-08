@@ -38,6 +38,7 @@ namespace LinkNest.Infrastructure.Repositories
         public void Update(Post post)
         {
             appDbContext.Set<Post>().Update(post);
+        
         }
 
         public void Delete(Post post)

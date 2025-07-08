@@ -51,5 +51,6 @@ namespace LinkNest.Domain.UserProfiles
             DateOfBirth = dateOfBirth;
             CurrentCity = currentCity;
         }
+
     }
 }

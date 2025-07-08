@@ -1,0 +1,15 @@
+﻿Check UpdateComment
+	should i use include to get nav prop or i use domain model function
+
+Check deleting comment and interaction
+	should i user repo or domain model functions
+
+Deleting Post
+	how to handle related comments and interactions
+
+Validators 
+	how to execute them
+
+Test ability of using same command to multiple command handlers
+	ChatGPT : ❌ No, the same command should not be used in multiple command handlers.
+
