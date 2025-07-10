@@ -23,12 +23,12 @@
     public class Result
     {
         public bool IsSuccess { get; }
-        public List<string>? errors { get; }
+        public List<string>? Errors { get; }
 
         private Result(bool isSuccess, List<string>? errors = null)
         {
             IsSuccess = isSuccess;
-            this.errors = errors ?? new List<string>();
+            this.Errors = errors ?? new List<string>();
         }
 
         // Factory Method for Success

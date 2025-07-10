@@ -70,8 +70,21 @@ namespace LinkNest.Domain.Posts
             {
                 throw new InvalidOperationException("Interaction not found in the post.");
             }
+        }
 
+        public void ClearComments()
+        {
+            Comments.Clear();
+        }
+        public void ClearInteractions()
+        {
+            Interactions.Clear();
+        }
 
+        public void RemoveAllRelatedData()
+        {
+            Comments.Clear();
+            Interactions.Clear();
         }
     }
 }

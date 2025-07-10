@@ -4,7 +4,7 @@ using LinkNest.Domain.UserProfiles;
 
 namespace LinkNest.Application.UserProfiles.AddUserProfile
 {
-    internal record AddUserProfileCommand(
+    public record AddUserProfileCommand(
         FirstName FirstName,
         LastName LastName,
         UserProfileEmail Email,

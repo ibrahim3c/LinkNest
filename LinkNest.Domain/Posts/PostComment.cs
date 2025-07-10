@@ -30,5 +30,10 @@ namespace LinkNest.Domain.Posts
                 PostId=postId
             };
         }
+
+        public void UpdateConent(Content content)
+        {
+            this.Content = content;
+        }
     }
 }

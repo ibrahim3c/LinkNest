@@ -1,6 +1,7 @@
 ﻿using LinkNest.Domain.Posts;
 using LinkNest.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace LinkNest.Infrastructure.Repositories
 {
@@ -35,6 +36,17 @@ namespace LinkNest.Infrastructure.Repositories
             return await appDbContext.Set<Post>().FirstOrDefaultAsync(u => u.Guid == PostId);
         }
 
+        public async Task<Post> GetByIdAsync(Guid postId, params Expression<Func<Post, object>>[] includes)
+        {
+            IQueryable<Post> query = appDbContext.Set<Post>();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.FirstOrDefaultAsync(u => u.Guid == postId);
+        }
         public void Update(Post post)
         {
             appDbContext.Set<Post>().Update(post);

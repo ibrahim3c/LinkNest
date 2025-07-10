@@ -4,7 +4,7 @@ using LinkNest.Domain.UserProfiles;
 
 namespace LinkNest.Application.UserProfiles.UpdateUserProfile
 {
-        internal record UpdateUserProfileCommand(
+        public record UpdateUserProfileCommand(
             Guid Id,
             FirstName FirstName,
             LastName LastName,

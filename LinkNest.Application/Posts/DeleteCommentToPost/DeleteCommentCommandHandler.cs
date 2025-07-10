@@ -14,13 +14,16 @@ namespace LinkNest.Application.Posts.DeleteCommentToPost
         public async Task<Result> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
         {
             var comment= await unitOfWork.PostRep.GetCommentByIdAsync(request.CommentId);
-
             if (comment is null)
                 return Result.Failure(["No Comment Found"]);
 
-            unitOfWork.PostRep.DeleteComment(comment);
-            await unitOfWork.SaveChangesAsync();
+            var post=await unitOfWork.PostRep.GetByIdAsync(comment.PostId,p=>p.Comments);
+            if (post is null)
+                return Result.Failure(["No Post Found"]);
 
+            post.RemoveComment(comment);
+
+            await unitOfWork.SaveChangesAsync();
             return Result.Success();
         }
     }

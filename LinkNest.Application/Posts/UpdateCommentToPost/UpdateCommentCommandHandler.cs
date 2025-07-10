@@ -22,11 +22,9 @@ namespace LinkNest.Application.Posts.UpdateCommentToPost
             if (comment == null)
                 return Result.Failure(["No Command Found"]);
 
-            var post = await unitOfWork.PostRep.GetByIdAsync(comment.PostId);
-            if(post is null)
-                return Result.Failure(["No Post found for this comment"]);
+            comment.UpdateConent(request.content);
 
-            // to be continue
+            await unitOfWork.SaveChangesAsync();
             return  Result.Success();
 
         }

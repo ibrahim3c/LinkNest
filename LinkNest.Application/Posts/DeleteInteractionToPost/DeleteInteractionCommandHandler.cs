@@ -18,11 +18,14 @@ namespace LinkNest.Application.Posts.DeleteInteractionToPost
             if (interaction is null)
                 return Result.Failure(["No Interaction Found"]);
 
-            unitOfWork.PostRep.DeleteInteraction(interaction);
+            var post = await unitOfWork.PostRep.GetByIdAsync(interaction.PostId, p => p.Interactions);
+            if (post is null)
+                return Result.Failure(["No Post Found"]);
+
+            post.RemoveInteraction(interaction);
             await unitOfWork.SaveChangesAsync();
 
             return Result.Success();
-
         }
     }
 }

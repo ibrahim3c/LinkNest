@@ -1,4 +1,6 @@
 ﻿
+using System.Linq.Expressions;
+
 namespace LinkNest.Domain.Posts
 {
     public interface IPostRepository
@@ -8,6 +10,7 @@ namespace LinkNest.Domain.Posts
         void Update(Post post);
         void Delete(Post post);
         Task<Post> GetByIdAsync(Guid PostId);
+        Task<Post> GetByIdAsync(Guid postId, params Expression<Func<Post, object>>[] includes);
 
         //comment
         Task AddCommentAsync(PostComment comment);
