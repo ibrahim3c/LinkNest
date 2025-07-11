@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LinkNest.Api.Controllers.V1
+namespace LinkNest.Api.Controllers.V1.Posts
 {
     [ApiController]
     //[Route("api/v{version:apiVersion}/[controller]")]

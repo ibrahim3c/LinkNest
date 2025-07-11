@@ -26,7 +26,8 @@ namespace LinkNest.Domain.Follows
             return new Follow
             {
                 FolloweeId = followerId,
-                FollowerId = followerId
+                FollowerId = followerId,
+                Guid= Guid.NewGuid()
             };
         }
         public UserProfile Follower {  get; private set; }

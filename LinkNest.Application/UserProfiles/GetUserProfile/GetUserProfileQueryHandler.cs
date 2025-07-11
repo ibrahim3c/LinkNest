@@ -18,16 +18,20 @@ namespace LinkNest.Application.UserProfiles.GetUserProfile
         {
             using var _connection = _connectionFactory.CreateConnection();
 
+
             var sql = """
-                select firstName as FirstName,
-                lastName as LastName,
-                email as Email
-                dateOfBirth as DateOfBirth,
-                createdOn as CreatedOn,
-                currentCity as CurrentCity
-                from UserProfile 
-                where userProfileId=@UserProfileId
+                SELECT 
+                    "Guid" AS UserProfileId,
+                    "FirstName" AS FirstName,
+                    "LastName" AS LastName,
+                    "Email" AS Email,
+                    "DateOfBirth" AS DateOfBirth,
+                    "CreatedOn" AS CreatedOn,
+                    "CurrentCity" AS CurrentCity
+                FROM public."UserProfile"
+                WHERE "Guid" = @UserProfileId
                 """;
+
             var response = await _connection.QueryFirstOrDefaultAsync<GetUserProfileResponse>(sql, new { UserProfileId = request.userProfileId });
             if (response == null)
                 return Result<GetUserProfileResponse>.Failure(["User Profile not found"]);

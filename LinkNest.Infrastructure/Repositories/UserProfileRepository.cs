@@ -1,4 +1,5 @@
-﻿using LinkNest.Domain.Posts;
+﻿using ApartmentBooking.Domain.Users;
+using LinkNest.Domain.Posts;
 using LinkNest.Domain.UserProfiles;
 using LinkNest.Infrastructure.Data;
 using MediatR;
@@ -26,12 +27,12 @@ namespace LinkNest.Infrastructure.Repositories
 
         public async Task<bool> IsEmailExist(string email)
         {
-            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email.email == email);
+            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email == new UserProfileEmail(email));
         }
 
         public async Task<bool> IsEmailExist(string email,string except)
         {
-            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email.email == email && u.Email.email != except);
+            return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email == new UserProfileEmail(email) && u.Email != new UserProfileEmail(except) );
         }
         public void Update(UserProfile userProfile)
         {

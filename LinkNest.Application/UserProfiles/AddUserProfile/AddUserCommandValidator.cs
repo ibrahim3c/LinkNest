@@ -17,7 +17,7 @@ namespace LinkNest.Application.UserProfiles.AddUserProfile
             RuleFor(x => x.LastName)
                 .NotNull().WithMessage("Last name is required");
 
-            RuleFor(x => x.Email.email)
+            RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email is required")
                 .Matches(@"^[^@\s]+@[^@\s]+\.[^@\s]+$").WithMessage("Invalid email format");
 

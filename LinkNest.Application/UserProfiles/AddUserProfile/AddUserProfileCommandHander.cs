@@ -1,4 +1,5 @@
 ﻿
+using ApartmentBooking.Domain.Users;
 using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Domain.Abstraction;
 using LinkNest.Domain.UserProfiles;
@@ -17,10 +18,14 @@ namespace LinkNest.Application.UserProfiles.AddUserProfile
         async Task<Result<Guid>> IRequestHandler<AddUserProfileCommand, Result<Guid>>.Handle(AddUserProfileCommand request, CancellationToken cancellationToken)
         {
 
-            if (await unitOfWork.userProfileRepo.IsEmailExist(request.Email.email))
+            if (await unitOfWork.userProfileRepo.IsEmailExist(request.Email))
                 return Result<Guid>.Failure(["The Email Already Exists"]);
 
-            var user = UserProfile.Create(request.FirstName, request.LastName, request.Email, request.DateOfBirth, request.CurrentCity);
+            var user = UserProfile.Create(new FirstName (request.FirstName),
+                new LastName( request.LastName),
+                new UserProfileEmail( request.Email),
+                request.DateOfBirth,
+                new CurrentCity( request.CurrentCity));
 
             await unitOfWork.userProfileRepo.AddAsync(user);
             await unitOfWork.SaveChangesAsync();

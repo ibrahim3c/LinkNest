@@ -26,7 +26,8 @@ namespace LinkNest.Domain.Posts
                 CreatedAt = DateTime.UtcNow,
                 PostId = postId,
                 InteractionType = interactionType,
-                UserProfileId = userProfileId
+                UserProfileId = userProfileId,
+                Guid= Guid.NewGuid()
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿using LinkNest.Application.Abstraction.Messaging;
+﻿using ApartmentBooking.Domain.Users;
+using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Domain.Abstraction;
 using LinkNest.Domain.UserProfiles;
 using System;
@@ -23,16 +24,16 @@ namespace LinkNest.Application.UserProfiles.UpdateUserProfile
             if (user == null)
                 return Result.Failure(["No User Found"]);
 
-            var isEmailTaken = await unitOfWork.userProfileRepo.IsEmailExist(request.Email.email, user.Email.email);
+            var isEmailTaken = await unitOfWork.userProfileRepo.IsEmailExist(request.Email, user.Email.email);
             if (isEmailTaken)
                 return Result.Failure(["Email is already in use by another user."]);
             // Step 3: Update user profile fields
             user.Update(
-                request.FirstName,
-                request.LastName,
-                request.Email,
+                new FirstName (request.FirstName),
+                new LastName( request.LastName),
+                new UserProfileEmail( request.Email),
                 request.DateOfBirth,
-                request.CurrentCity
+                new CurrentCity( request.CurrentCity)
             );
 
             // Step 4: Save changes

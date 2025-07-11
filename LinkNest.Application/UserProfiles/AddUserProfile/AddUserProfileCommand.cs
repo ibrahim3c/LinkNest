@@ -5,10 +5,10 @@ using LinkNest.Domain.UserProfiles;
 namespace LinkNest.Application.UserProfiles.AddUserProfile
 {
     public record AddUserProfileCommand(
-        FirstName FirstName,
-        LastName LastName,
-        UserProfileEmail Email,
+        string FirstName,
+        string LastName,
+        string Email,
         DateTime DateOfBirth,
-        CurrentCity CurrentCity
+        string CurrentCity
      ): ICommand<Guid>; 
 }

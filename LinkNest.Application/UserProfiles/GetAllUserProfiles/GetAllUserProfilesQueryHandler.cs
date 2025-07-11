@@ -1,10 +1,8 @@
 ﻿using Dapper;
 using LinkNest.Application.Abstraction.Data;
 using LinkNest.Application.Abstraction.Messaging;
-using LinkNest.Application.Posts.GetUserPosts;
 using LinkNest.Application.UserProfiles.GetUserProfile;
 using LinkNest.Domain.Abstraction;
-using System.Data.Common;
 
 namespace LinkNest.Application.UserProfiles.GetAllUserProfiles
 {
@@ -22,13 +20,15 @@ namespace LinkNest.Application.UserProfiles.GetAllUserProfiles
             using var connection=sqlConnectionFactory.CreateConnection();
 
             var sql = """
-                select firstName as FirstName,
-                lastName as LastName,
-                email as Email
-                dateOfBirth as DateOfBirth,
-                createdOn as CreatedOn,
-                currentCity as CurrentCity
-                from UserProfile 
+                SELECT 
+                    "Guid" AS UserProfileId,
+                    "FirstName" AS FirstName,
+                    "LastName" AS LastName,
+                    "Email" AS Email,
+                    "DateOfBirth" AS DateOfBirth,
+                    "CreatedOn" AS CreatedOn,
+                    "CurrentCity" AS CurrentCity
+                FROM public."UserProfile"
                 """;
             var response =( await connection.QueryAsync<GetUserProfileResponse>(sql)).ToList();
             if (!response.Any())

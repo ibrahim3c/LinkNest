@@ -5,7 +5,7 @@ namespace LinkNest.Application.UserProfiles.GetUserProfile
 {
     public class GetUserProfileResponse
     {
-        public string UserProfileId { get; init; }
+        public Guid UserProfileId { get; init; }
         public string FirstName { get; init; }
         public string LastName { get; init; }
         public string Email { get; init; }

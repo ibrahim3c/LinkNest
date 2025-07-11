@@ -38,7 +38,7 @@ namespace LinkNest.Domain.UserProfiles
         {
             //To Do - validate the parameters & error handling & raise domain events if needed
 
-            var user = new UserProfile(new Guid(), firstName, lastName, email,dateOfBirth,DateTime.UtcNow,currentCity);
+            var user = new UserProfile(Guid.NewGuid(), firstName, lastName, email,dateOfBirth,DateTime.UtcNow,currentCity);
             //user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
             return user;
         }

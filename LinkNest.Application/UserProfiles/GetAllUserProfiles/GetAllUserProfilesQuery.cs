@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace LinkNest.Application.UserProfiles.GetAllUserProfiles
 {
-    internal sealed record GetAllUserProfilesQuery():IQuery<List<GetUserProfileResponse>>;
+    public sealed record GetAllUserProfilesQuery():IQuery<List<GetUserProfileResponse>>;
 }

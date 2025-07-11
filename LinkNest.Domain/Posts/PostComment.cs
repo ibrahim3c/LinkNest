@@ -27,7 +27,8 @@ namespace LinkNest.Domain.Posts
                 Content = content,
                 CreatedAt = DateTime.UtcNow,
                 UserProfileId = userProfileId,
-                PostId=postId
+                PostId=postId,
+                Guid= Guid.NewGuid()
             };
         }
 
