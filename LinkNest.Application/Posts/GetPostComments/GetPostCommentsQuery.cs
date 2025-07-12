@@ -2,5 +2,5 @@
 
 namespace LinkNest.Application.Posts.GetPostComments
 {
-    internal sealed record GetPostInteractionsQuery(Guid postId):IQuery<GetPostInteractionsResponse>;
+    public  record GetPostCommentsQuery(Guid postId):IQuery<GetPostCommentsResponse>;
 }

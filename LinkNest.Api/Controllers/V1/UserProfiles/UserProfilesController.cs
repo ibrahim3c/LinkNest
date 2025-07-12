@@ -1,13 +1,10 @@
 ﻿using Asp.Versioning;
-using LinkNest.Application.Follows.GetAllFollowees;
 using LinkNest.Application.UserProfiles.AddUserProfile;
 using LinkNest.Application.UserProfiles.GetAllUserProfiles;
 using LinkNest.Application.UserProfiles.GetUserProfile;
 using LinkNest.Application.UserProfiles.UpdateUserProfile;
-using LinkNest.Domain.UserProfiles;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace LinkNest.Api.Controllers.V1.UserProfiles
 {

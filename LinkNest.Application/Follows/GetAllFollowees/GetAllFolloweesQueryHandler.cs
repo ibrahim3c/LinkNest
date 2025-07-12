@@ -3,11 +3,6 @@ using LinkNest.Application.Abstraction.Data;
 using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Application.UserProfiles.GetUserProfile;
 using LinkNest.Domain.Abstraction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinkNest.Application.Follows.GetAllFollowees
 {
@@ -25,18 +20,18 @@ namespace LinkNest.Application.Follows.GetAllFollowees
             using var connection= _connectionFactory.CreateConnection();
             var sql = """
                 SELECT 
-                    up.firstName AS FirstName,
-                    up.lastName AS LastName,
-                    up.email AS Email,
-                    up.dateOfBirth AS DateOfBirth,
-                    up.createdOn AS CreatedOn,
-                    up.currentCity AS CurrentCity
+                   up."FirstName" AS FirstName,
+                   up."LastName" AS LastName,
+                   up."Email" AS Email,
+                   up."DateOfBirth" AS DateOfBirth,
+                   up."CreatedOn" AS CreatedOn,
+                   up."CurrentCity" AS CurrentCity
                 FROM 
-                    userProfile up
+                    "UserProfile" up
                 INNER JOIN 
-                    follows f ON up.Guid = f.followeeId
+                    "Follows" f ON "up.Guid" = f."FolloweeId"
                 WHERE 
-                    f.followerId = @UserProfileId;
+                    f."FollowerId" = @UserProfileId;
                 """;
             var followees = (await connection.QueryAsync<GetUserProfileResponse>(sql, new { UserProfileId = request.userProfileId })).ToList();
             if (!followees.Any())

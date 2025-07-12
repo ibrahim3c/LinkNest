@@ -19,15 +19,15 @@ namespace LinkNest.Application.Posts.GetPost
             using var connection= sqlConnectionFactory.CreateConnection();
             const string sql = """
             SELECT 
-                id AS Id,
-                content AS Content,
-                createdAt AS CreatedAt,
-                imageUrl AS ImageUrl,
-                userProfile_id AS UserProfileId
+                "Guid" AS Id,
+                "Content" AS Content,
+                "CreatedAt" AS CreatedAt,
+                "mageUrl" AS ImageUrl,
+                "UserProfileId" AS UserProfileId
             FROM 
-                post
+                "Post"
             WHERE 
-                id = @PostId
+                "Guid" = @PostId
         """;
 
             var Response = await connection.QuerySingleOrDefaultAsync<GetPostResponse>(sql, new { request.PostId });

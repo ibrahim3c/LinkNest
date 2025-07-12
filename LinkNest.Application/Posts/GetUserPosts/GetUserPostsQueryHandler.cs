@@ -20,15 +20,15 @@ namespace LinkNest.Application.Posts.GetUserPosts
             using var connection=_connectionFactory.CreateConnection();
             const string sql = """
             SELECT 
-                id AS Id,
-                content AS Content,
-                to_char(created_at, 'YYYY-MM-DD HH24:MI:SS') AS CreatedAt,
-                image_url AS ImageUrl,
-                user_profile_id AS UserProfileId
+                "Guid" AS Id,
+                "Content" AS Content,
+                "CreatedAt" AS CreatedAt,
+                "ImageUrl" AS ImageUrl,
+                "UserProfileId" AS UserProfileId
             FROM 
-                post
+                "Post"
             WHERE 
-                user_profile_id = @UserProfileId
+                "UserProfileId" = @UserProfileId
         """;
 
             var posts = (await connection.QueryAsync<GetPostResponse>(sql, new { request.UserProfileId })).ToList();

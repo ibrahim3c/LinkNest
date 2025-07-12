@@ -21,11 +21,11 @@ namespace LinkNest.Application.Posts.GetPostInteractions
 
             const string sql = """
                 SELECT
-                interactionType as InteractionType,
-                createdAt AS CreatedAt,
-                userProfileId as UserProfileId,
-                from postInteraction
-                where postId=@PostId
+                "InteractionType" as InteractionType,
+                "CreatedAt" AS CreatedAt,
+                "UserProfileId" as UserProfileId,
+                from "PostInteraction"
+                where "PostId"=@PostId
                 """;
 
             var interactions = (await connection.QueryAsync<InteractionInfo>(sql, new { PostId = request.postId })).ToList();

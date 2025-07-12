@@ -2,5 +2,5 @@
 
 namespace LinkNest.Application.Follows.GetAllFollowers
 {
-    internal sealed record GetAllFollowersQuery(Guid UserProfileId):IQuery<GetAllFollowersResponse>;
+    public sealed record GetAllFollowersQuery(Guid UserProfileId):IQuery<GetAllFollowersResponse>;
 }

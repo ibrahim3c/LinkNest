@@ -1,6 +1,22 @@
-﻿is sql queries right ?
-
-Validators 
+﻿Validators 
 	how to execute them
+
+U can not make query or command for mulitple handlers
+
+in ngsql u should make the query like this 
+                SELECT
+                "Content" as Content, // "content"  or Content is wrong 
+                "CreatedAt" AS CreatedAt,
+                "UserProfileId" as UserProfileId
+                from "PostComment"
+                where "postId"=@PostId
+
+Please don't make the response class internal like this:
+    internal class GetPostInteractionsResponse
+    {
+        public Guid PostId { get; init; }
+        public List<InteractionInfo> InteractionInfos { get; init; }
+    }
+    Because when I try to return this response from the controller, it cannot be accessed.
 
 
