@@ -2,6 +2,6 @@
 
 namespace LinkNest.Application.Follows.UnFollowUserProfile
 {
-    internal record UnFollowCommand(Guid followeeId, Guid followerId) : ICommand;
+    public record UnFollowCommand(Guid followeeId, Guid followerId) : ICommand;
 
 }

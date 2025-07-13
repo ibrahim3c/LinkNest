@@ -2,5 +2,5 @@
 
 namespace LinkNest.Application.Posts.DeleteCommentToPost
 {
-    internal record DeleteCommentCommand(Guid CommentId):ICommand;
+    public record DeleteCommentCommand(Guid CommentId):ICommand;
 }

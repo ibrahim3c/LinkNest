@@ -19,4 +19,7 @@ Please don't make the response class internal like this:
     }
     Because when I try to return this response from the controller, it cannot be accessed.
 
+Make commands and queries public 
+Make data types of commands or queries is primtive  
+
 

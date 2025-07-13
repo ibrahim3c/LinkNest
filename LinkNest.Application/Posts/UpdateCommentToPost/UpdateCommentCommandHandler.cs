@@ -1,5 +1,6 @@
 ﻿using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Domain.Abstraction;
+using LinkNest.Domain.Posts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace LinkNest.Application.Posts.UpdateCommentToPost
             if (comment == null)
                 return Result.Failure(["No Command Found"]);
 
-            comment.UpdateConent(request.content);
+            comment.UpdateConent(new Content( request.content));
 
             await unitOfWork.SaveChangesAsync();
             return  Result.Success();

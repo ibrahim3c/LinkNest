@@ -1,5 +1,6 @@
 ﻿using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Domain.Abstraction;
+using LinkNest.Domain.Posts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace LinkNest.Application.Posts.UpdatePostContent
             if (post == null)
                 return Result.Failure(["No Post Found"]);
 
-            post.UpdateContent(request.Content);
+            post.UpdateContent(new Content( request.Content));
             await unitOfWork.SaveChangesAsync();
 
             return Result.Success();

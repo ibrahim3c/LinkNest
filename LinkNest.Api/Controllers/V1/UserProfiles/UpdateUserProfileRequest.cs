@@ -6,5 +6,4 @@
         string Email,
         DateTime DateOfBirth,
         string CurrentCity);
-
 }

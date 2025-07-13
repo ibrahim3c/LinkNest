@@ -3,5 +3,5 @@ using LinkNest.Domain.Posts;
 
 namespace LinkNest.Application.Posts.AddPost
 {
-    internal record AddPostCommand(Content Content,  Url ImageUrl , Guid UserProfileId) :ICommand<Guid>;
+    public record AddPostCommand(string Content,  string ImageUrl , Guid UserProfileId) :ICommand<Guid>;
 }

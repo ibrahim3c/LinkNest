@@ -2,5 +2,5 @@
 
 namespace LinkNest.Application.Posts.DeleteInteractionToPost
 {
-    internal record DeleteInteractionCommand(Guid interactionId):ICommand;
+    public record DeleteInteractionCommand(Guid interactionId):ICommand;
 }

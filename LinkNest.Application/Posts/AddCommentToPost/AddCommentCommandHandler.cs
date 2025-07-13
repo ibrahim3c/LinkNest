@@ -1,11 +1,6 @@
 ﻿using LinkNest.Application.Abstraction.Messaging;
 using LinkNest.Domain.Abstraction;
 using LinkNest.Domain.Posts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinkNest.Application.Posts.AddCommentToPost
 {
@@ -27,7 +22,7 @@ namespace LinkNest.Application.Posts.AddCommentToPost
             if(user is null)
                 return Result<Guid>.Failure(["No User Found"]);
 
-            var comment = PostComment.Create(request.Content, request.PostId, request.UserProfileId);
+            var comment = PostComment.Create(new Content(request.Content), request.PostId, request.UserProfileId);
             post.AddComment(comment);
 
             await unitOfWork.SaveChangesAsync();

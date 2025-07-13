@@ -2,5 +2,5 @@
 
 namespace LinkNest.Application.Follows.FollowUserProfile
 {
-    internal record FollowCommand(Guid followeeId, Guid followingId):ICommand;
+    public record FollowCommand(Guid followeeId, Guid followingId):ICommand;
 }

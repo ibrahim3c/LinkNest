@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace LinkNest.Application.Posts.AddInteractionToPost
 {
-    internal record AddInteractionCommand(Guid postId, Guid userProfileId, InteractionTypes interactionType):ICommand<Guid>;
+    public record AddInteractionCommand(Guid postId, Guid userProfileId, InteractionTypes interactionType):ICommand<Guid>;
 }

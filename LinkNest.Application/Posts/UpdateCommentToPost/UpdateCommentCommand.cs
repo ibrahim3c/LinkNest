@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace LinkNest.Application.Posts.UpdateCommentToPost
 {
-    internal record UpdateCommentCommand(Guid commandId,Content content):ICommand;
+    public record UpdateCommentCommand(Guid commandId,string content):ICommand;
 }

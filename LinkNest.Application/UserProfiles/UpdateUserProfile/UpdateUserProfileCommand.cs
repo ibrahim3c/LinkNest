@@ -1,7 +1,4 @@
-﻿using ApartmentBooking.Domain.Users;
-using LinkNest.Application.Abstraction.Messaging;
-using LinkNest.Domain.UserProfiles;
-using System.Collections.Specialized;
+﻿using LinkNest.Application.Abstraction.Messaging;
 
 namespace LinkNest.Application.UserProfiles.UpdateUserProfile
 {

@@ -3,5 +3,5 @@ using LinkNest.Domain.Posts;
 
 namespace LinkNest.Application.Posts.UpdatePostContent
 {
-    internal record UpdatePostContentCommand(Guid postId,Content Content):ICommand;
+    public record UpdatePostContentCommand(Guid postId,string Content):ICommand;
 }
