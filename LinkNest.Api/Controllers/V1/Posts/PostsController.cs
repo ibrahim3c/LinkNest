@@ -9,6 +9,7 @@ using LinkNest.Application.Posts.DeletePost;
 using LinkNest.Application.Posts.GetPost;
 using LinkNest.Application.Posts.GetPostComments;
 using LinkNest.Application.Posts.GetPostInteractions;
+using LinkNest.Application.Posts.GetUserPosts;
 using LinkNest.Application.Posts.UpdateCommentToPost;
 using LinkNest.Application.Posts.UpdatePostContent;
 using MediatR;
@@ -33,7 +34,7 @@ namespace LinkNest.Api.Controllers.V1.Posts
         [HttpGet("{userId}/posts")]
         public async Task<IActionResult> GetUserPosts(Guid userId)
         {
-            var query=new GetAllFolloweesQuery(userId);
+            var query=new GetUserPostsQuery(userId);
             var result=await sender.Send(query);
 
             if (!result.IsSuccess)

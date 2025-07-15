@@ -22,4 +22,6 @@ Please don't make the response class internal like this:
 Make commands and queries public 
 Make data types of commands or queries is primtive  
 
+i don't understand validaion behavior :()
+
 

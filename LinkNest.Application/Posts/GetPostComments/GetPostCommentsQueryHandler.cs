@@ -24,7 +24,7 @@ namespace LinkNest.Application.Posts.GetPostComments
                 "CreatedAt" AS CreatedAt,
                 "UserProfileId" as UserProfileId
                 from "PostComment"
-                where "postId"=@PostId
+                where "PostId"=@PostId
                 """;
 
             var comments = (await connection.QueryAsync<CommentInfo>(sql, new { PostId = request.postId })).ToList();

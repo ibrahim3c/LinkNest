@@ -24,8 +24,8 @@ namespace LinkNest.Application.Follows.GetAllFollowers
                     up."LastName" AS LastName,
                     up."Email" AS Email,
                     up."DateOfBirth" AS DateOfBirth,
-                    up."CreatedOn AS CreatedOn,
-                    up."CurrentCity AS CurrentCity
+                    up."CreatedOn" AS CreatedOn,
+                    up."CurrentCity" AS CurrentCity
                 FROM 
                     userProfile up
                 INNER JOIN 

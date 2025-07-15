@@ -23,7 +23,7 @@ namespace LinkNest.Application.Posts.GetPostInteractions
                 SELECT
                 "InteractionType" as InteractionType,
                 "CreatedAt" AS CreatedAt,
-                "UserProfileId" as UserProfileId,
+                "UserProfileId" as UserProfileId
                 from "PostInteraction"
                 where "PostId"=@PostId
                 """;

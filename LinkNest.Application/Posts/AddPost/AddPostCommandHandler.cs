@@ -14,6 +14,10 @@ namespace LinkNest.Application.Posts.AddPost
         }
         public async Task<Result<Guid>> Handle(AddPostCommand request, CancellationToken cancellationToken)
         {
+            var user = await unitOfWork.userProfileRepo.GetByIdAsync(request.UserProfileId);
+            if (user is null)
+                return Result<Guid>.Failure(["No User Profile Found"]);
+
             var post = Post.Create(new Content( request.Content), new Url( request.ImageUrl), request.UserProfileId);
             await unitOfWork.PostRep.AddAsync(post);
             await unitOfWork.SaveChangesAsync();

@@ -29,7 +29,7 @@ namespace LinkNest.Application.Follows.GetAllFollowees
                 FROM 
                     "UserProfile" up
                 INNER JOIN 
-                    "Follows" f ON "up.Guid" = f."FolloweeId"
+                    "Follows" f ON up."Guid" = f."FolloweeId"
                 WHERE 
                     f."FollowerId" = @UserProfileId;
                 """;

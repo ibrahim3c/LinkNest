@@ -22,7 +22,7 @@ namespace LinkNest.Application.Posts.GetPost
                 "Guid" AS Id,
                 "Content" AS Content,
                 "CreatedAt" AS CreatedAt,
-                "mageUrl" AS ImageUrl,
+                "ImageUrl" AS ImageUrl,
                 "UserProfileId" AS UserProfileId
             FROM 
                 "Post"
