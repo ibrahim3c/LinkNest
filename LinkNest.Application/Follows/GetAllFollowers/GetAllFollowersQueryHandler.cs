@@ -20,16 +20,17 @@ namespace LinkNest.Application.Follows.GetAllFollowers
             using var connection= connectionFactory.CreateConnection();
             var sql = """
                 SELECT 
-                    up."FirstName" AS FirstName,
-                    up."LastName" AS LastName,
-                    up."Email" AS Email,
-                    up."DateOfBirth" AS DateOfBirth,
-                    up."CreatedOn" AS CreatedOn,
-                    up."CurrentCity" AS CurrentCity
+                   up."Guid" AS UserProfileId,
+                   up."FirstName" AS FirstName,
+                   up."LastName" AS LastName,
+                   up."Email" AS Email,
+                   up."DateOfBirth" AS DateOfBirth,
+                   up."CreatedOn" AS CreatedOn,
+                   up."CurrentCity" AS CurrentCity
                 FROM 
-                    userProfile up
+                    "UserProfile" up
                 INNER JOIN 
-                    follows f ON up."Guid" = f."FollowerId"
+                    "Follows" f ON up."Guid" = f."FollowerId"
                 WHERE 
                     f."FolloweeId" = @UserProfileId;
                 """;

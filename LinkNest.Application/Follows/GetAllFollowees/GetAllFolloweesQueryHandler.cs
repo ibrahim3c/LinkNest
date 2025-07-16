@@ -20,6 +20,7 @@ namespace LinkNest.Application.Follows.GetAllFollowees
             using var connection= _connectionFactory.CreateConnection();
             var sql = """
                 SELECT 
+                   up."Guid" AS UserProfileId,
                    up."FirstName" AS FirstName,
                    up."LastName" AS LastName,
                    up."Email" AS Email,
@@ -33,6 +34,8 @@ namespace LinkNest.Application.Follows.GetAllFollowees
                 WHERE 
                     f."FollowerId" = @UserProfileId;
                 """;
+
+
             var followees = (await connection.QueryAsync<GetUserProfileResponse>(sql, new { UserProfileId = request.userProfileId })).ToList();
             if (!followees.Any())
                 return Result<GetAllFolloweesRespones>.Failure(["No Followees Found"]);

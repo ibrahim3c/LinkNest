@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using LinkNest.Application.Follows.FollowUserProfile;
+using LinkNest.Application.Follows.GetAllFollowees;
 using LinkNest.Application.Follows.GetAllFollowers;
 using LinkNest.Application.Follows.UnFollowUserProfile;
 using LinkNest.Application.Posts.GetUserPosts;
@@ -23,7 +24,7 @@ namespace LinkNest.Api.Controllers.V1.Follows
         [HttpGet("{followerId}/following")]
         public async Task<IActionResult> GetAllFollowing(Guid followerId)
         {
-            var query = new GetUserPostsQuery(followerId);
+            var query = new GetAllFolloweesQuery(followerId);
             var result = await sender.Send(query);
 
             if (!result.IsSuccess)

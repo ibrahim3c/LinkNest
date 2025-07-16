@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using LinkNest.Application.Common.Behaviors;
-using LinkNest.Application.UserProfiles.AddUserProfile;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,7 +12,7 @@ namespace LinkNest.Application
             services.AddMediatR(config => config.RegisterServicesFromAssemblies(typeof(DependencyInjection).Assembly));
 
             //fluent validation
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly,
                 includeInternalTypes: true);
 
