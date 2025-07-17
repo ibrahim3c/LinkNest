@@ -1,4 +1,6 @@
 ﻿
+using LinkNest.Api.Middlewares;
+
 namespace LinkNest.Api.Registers
 {
     public class MiddlewareRegistrar : IWebApplicationRegistrar
@@ -12,7 +14,7 @@ namespace LinkNest.Api.Registers
                 app.UseSwaggerUI();
             }
             app.UseHttpsRedirection();
-
+            app.UseMiddleware<GlobalExceptionHandler>();
             app.UseAuthorization();
 
 
