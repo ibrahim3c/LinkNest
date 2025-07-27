@@ -1,8 +1,6 @@
 ﻿using ApartmentBooking.Domain.Users;
-using LinkNest.Domain.Posts;
 using LinkNest.Domain.UserProfiles;
 using LinkNest.Infrastructure.Data;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkNest.Infrastructure.Repositories
