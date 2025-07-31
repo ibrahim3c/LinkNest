@@ -33,6 +33,9 @@ namespace LinkNest.Domain.UserProfiles
         public ICollection<Follow> Followers { get; set; } = new List<Follow>(); // Users who follow this user
 
 
+
+
+
         // factory method
         public static UserProfile Create(FirstName firstName, LastName lastName, UserProfileEmail email,DateTime dateOfBirth,CurrentCity currentCity)
         {

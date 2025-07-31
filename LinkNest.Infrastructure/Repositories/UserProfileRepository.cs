@@ -32,6 +32,12 @@ namespace LinkNest.Infrastructure.Repositories
         {
             return await appDbContext.Set<UserProfile>().AnyAsync(u => u.Email == new UserProfileEmail(email) && u.Email != new UserProfileEmail(except) );
         }
+
+        public void Remove(UserProfile userProfile)
+        {
+            appDbContext.Set<UserProfile>().Remove(userProfile);
+        }
+
         public void Update(UserProfile userProfile)
         {
              appDbContext.Set<UserProfile>().Update(userProfile);

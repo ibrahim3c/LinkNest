@@ -7,5 +7,7 @@ namespace LinkNest.Domain.Identity
     {
         public Guid UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+
     }
 }

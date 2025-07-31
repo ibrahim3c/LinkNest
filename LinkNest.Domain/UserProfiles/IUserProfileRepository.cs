@@ -9,5 +9,6 @@ namespace LinkNest.Domain.UserProfiles
         Task<UserProfile> GetByIdAsync(Guid userProfileId);
         Task<bool> IsEmailExist(string email);
         Task<bool> IsEmailExist(string email, string except);
+        void Remove(UserProfile userProfile);
     }
 }
