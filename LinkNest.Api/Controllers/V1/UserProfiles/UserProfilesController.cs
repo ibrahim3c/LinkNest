@@ -1,5 +1,4 @@
 ﻿using Asp.Versioning;
-using LinkNest.Application.UserProfiles.AddUserProfile;
 using LinkNest.Application.UserProfiles.GetAllUserProfiles;
 using LinkNest.Application.UserProfiles.GetUserProfile;
 using LinkNest.Application.UserProfiles.UpdateUserProfile;
@@ -41,21 +40,10 @@ namespace LinkNest.Api.Controllers.V1.UserProfiles
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddUserProfile(AddUserProfileRequest request)
-        {
-            var command=new AddUserProfileCommand(request.FirstName,request.LastName,request.Email,request.DateOfBirth,request.CurrentCity);
-            var result = await sender.Send(command);
-            if(!result.IsSuccess)
-                return BadRequest(result.Errors);
-
-            //return CreatedAtAction(nameof(GetUserProfileById), new { id = result.Value });
-            return Created();
-        }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUserProfile( Guid id, UpdateUserProfileRequest request)
         {
-            var command = new UpdateUserProfileCommand(id, request.FirstName, request.LastName, request.Email ,request.DateOfBirth, request.CurrentCity);
+            var command = new UpdateUserProfileCommand(id, request.FirstName, request.LastName, request.Email ,request.DateOfBirth, request.CurrentCity,request.PhoneNmber);
 
             var result = await sender.Send(command);
 

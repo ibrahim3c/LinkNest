@@ -16,6 +16,7 @@ namespace LinkNest.Application
             services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly,
                 includeInternalTypes: true);
 
+
             return services;
         }
     }

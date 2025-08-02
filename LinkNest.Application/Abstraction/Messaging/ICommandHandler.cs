@@ -15,4 +15,11 @@ namespace LinkNest.Application.Abstraction.Messaging
     {
 
     }
+
+
+    public interface IAuthCommandHandler<in TCommand> : IRequestHandler<TCommand, AuthResult>
+    where TCommand : IAuthCommand
+    {
+
+    }
 }

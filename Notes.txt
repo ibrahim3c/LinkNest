@@ -25,3 +25,32 @@ Make data types of commands or queries is primtive
 i don't understand validaion behavior :()
 
 
+
+
+/*
+    Flow Between Frontend and Backend
+    User Requests a Password Reset
+        Frontend:
+            User enters their email in a "Forgot Password" form.
+            Frontend sends a POST request to ForgotPasswordAsync endpoint with the email.
+        Backend (ForgotPasswordAsync)
+            Checks if the email exists.
+            Generates a password reset token.
+            Sends an email with a reset link (SendPasswordResetEmailAsync).
+            Returns a success message: "Please go to your email and reset your password".
+    User Clicks the Reset Link in Email
+        Frontend:
+            Extracts userId and code from the URL.
+            Displays a password reset form for the user to enter a new password.
+    User Submits the New Password
+        Frontend:
+            Sends a POST request to ResetPasswordAsync with userId, code, and newPassword.
+        Backend (ResetPasswordAsync)
+            Validates input.
+            Finds the user.
+            Decodes the reset token.
+            Resets the password using userManager.ResetPasswordAsync().
+            Returns a success message: "Password Reset successfully".
+    */
+
+

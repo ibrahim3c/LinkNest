@@ -1,4 +1,5 @@
 ﻿using ApartmentBooking.Domain.Users;
+using LinkNest.Domain.Identity;
 using LinkNest.Domain.UserProfiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -52,6 +53,11 @@ namespace LinkNest.Infrastructure.Configurations
 
             builder.Property(u => u.CreatedOn)
                    .IsRequired();
+
+            builder.HasOne(u => u.AppUser)
+                    .WithOne()
+                    .HasForeignKey<UserProfile>(up => up.AppUserId);
+
         }
     }
 }

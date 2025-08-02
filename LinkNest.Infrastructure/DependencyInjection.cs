@@ -1,8 +1,10 @@
-﻿using LinkNest.Application.Abstraction.Data;
+﻿using LinkNest.Application.Abstraction.Auth;
+using LinkNest.Application.Abstraction.Data;
 using LinkNest.Application.Abstraction.Helpers;
 using LinkNest.Application.Abstraction.IServices;
 using LinkNest.Domain.Abstraction;
 using LinkNest.Domain.Identity;
+using LinkNest.Infrastructure.Auth;
 using LinkNest.Infrastructure.Data;
 using LinkNest.Infrastructure.Email;
 using LinkNest.Infrastructure.Repositories;
@@ -87,6 +89,12 @@ namespace LinkNest.Infrastructure
             }
 
                          );
+            #endregion
+
+
+            #region resolving
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
+
             #endregion
 
 
