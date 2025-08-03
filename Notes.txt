@@ -53,4 +53,10 @@ i don't understand validaion behavior :()
             Returns a success message: "Password Reset successfully".
     */
 
-
+  TODO:
+    domain exceptions
+    create roles app and api
+    sending email
+    event handler
+    logging
+    caching using redis

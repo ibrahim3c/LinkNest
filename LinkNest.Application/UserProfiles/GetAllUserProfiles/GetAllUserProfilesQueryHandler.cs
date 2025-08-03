@@ -21,14 +21,16 @@ namespace LinkNest.Application.UserProfiles.GetAllUserProfiles
 
             var sql = """
                 SELECT 
-                    "Guid" AS UserProfileId,
-                    "FirstName" AS FirstName,
-                    "LastName" AS LastName,
-                    "Email" AS Email,
-                    "DateOfBirth" AS DateOfBirth,
-                    "CreatedOn" AS CreatedOn,
-                    "CurrentCity" AS CurrentCity
-                FROM public."UserProfile"
+                    up."Guid" AS UserProfileId,
+                    up."FirstName" AS FirstName,
+                    up."LastName" AS LastName,
+                    up."Email" AS Email,
+                    up."DateOfBirth" AS DateOfBirth,
+                    up."CreatedOn" AS CreatedOn,
+                    up."CurrentCity" AS CurrentCity, 
+                    u."PhoneNumber" AS PhoneNumber
+                FROM public."UserProfile" up
+                INNER JOIN "Users" u ON up."AppUserId" = u."Id"
                 """;
             var response =( await connection.QueryAsync<GetUserProfileResponse>(sql)).ToList();
             if (!response.Any())

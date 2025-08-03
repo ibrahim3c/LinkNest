@@ -34,20 +34,6 @@ namespace LinkNest.Application.Identity.ForgetPassword
             //    // then user send data to reset password endpoint
 
 
-
-        }
-
-
-        private async Task SendPasswordResetEmailAsync(AppUser user, string scheme, string host)
-        {
-            // Generate the password reset token
-            var code = await userManager.GeneratePasswordResetTokenAsync(user);
-
-            // Construct the reset link
-            var callbackUrl = $"{scheme}://{host}/api/Account/ResetPassword?userId={user.Id}&code={Uri.EscapeDataString(code)}";
-            // Send email with the reset link
-            await emailService.SendAsync(user.Email, "Reset Your Password",
-                $"Please reset your password by clicking this link: <a href='{callbackUrl}'>Reset Password</a>");
         }
 
         private async Task SendResetPasswordEmailAsync(AppUser user)
