@@ -12,6 +12,7 @@ namespace LinkNest.Application.UserProfiles.GetUserProfile
         public DateTime DateOfBirth { get;init; }
         public DateTime CreatedOn { get; init; }
         public string CurrentCity { get; init; }
+        public string PhoneNumber { get; init; }
 
     }
 }

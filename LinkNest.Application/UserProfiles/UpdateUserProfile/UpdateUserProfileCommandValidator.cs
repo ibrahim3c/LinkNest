@@ -25,6 +25,11 @@ namespace LinkNest.Application.UserProfiles.UpdateUserProfile
             RuleFor(x => x.CurrentCity)
                 .NotEmpty().WithMessage("Current city is required.")
                 .MaximumLength(100).WithMessage("City name cannot be longer than 100 characters.");
+
+            RuleFor(x => x.PhoneNumber)
+                .NotEmpty().WithMessage("Phone number is required")
+                .Matches(@"^\+?\d{10,15}$").WithMessage("Phone number must be valid");
+
         }
     }
 }

@@ -3,7 +3,6 @@ using LinkNest.Application.Follows.FollowUserProfile;
 using LinkNest.Application.Follows.GetAllFollowees;
 using LinkNest.Application.Follows.GetAllFollowers;
 using LinkNest.Application.Follows.UnFollowUserProfile;
-using LinkNest.Application.Posts.GetUserPosts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

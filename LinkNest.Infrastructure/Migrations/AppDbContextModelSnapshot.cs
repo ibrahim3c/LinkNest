@@ -120,9 +120,6 @@ namespace LinkNest.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
-                    b.Property<Guid>("UserProfileId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -131,9 +128,6 @@ namespace LinkNest.Infrastructure.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
-
-                    b.HasIndex("UserProfileId")
-                        .IsUnique();
 
                     b.ToTable("Users", (string)null);
                 });
@@ -224,6 +218,10 @@ namespace LinkNest.Infrastructure.Migrations
                     b.Property<Guid>("Guid")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
@@ -255,6 +253,9 @@ namespace LinkNest.Infrastructure.Migrations
                         .HasColumnName("LastName");
 
                     b.HasKey("Guid");
+
+                    b.HasIndex("AppUserId")
+                        .IsUnique();
 
                     b.ToTable("UserProfile");
                 });
@@ -386,13 +387,39 @@ namespace LinkNest.Infrastructure.Migrations
 
             modelBuilder.Entity("LinkNest.Domain.Identity.AppUser", b =>
                 {
-                    b.HasOne("LinkNest.Domain.UserProfiles.UserProfile", "UserProfile")
-                        .WithOne()
-                        .HasForeignKey("LinkNest.Domain.Identity.AppUser", "UserProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.OwnsMany("LinkNest.Domain.Identity.RefreshToken", "RefreshTokens", b1 =>
+                        {
+                            b1.Property<string>("AppUserId")
+                                .HasColumnType("text");
 
-                    b.Navigation("UserProfile");
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<DateTime>("CreatedOn")
+                                .HasColumnType("timestamp with time zone");
+
+                            b1.Property<DateTime>("ExpiresOn")
+                                .HasColumnType("timestamp with time zone");
+
+                            b1.Property<DateTime?>("RevokedOn")
+                                .HasColumnType("timestamp with time zone");
+
+                            b1.Property<string>("Token")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("AppUserId", "Id");
+
+                            b1.ToTable("RefreshToken");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AppUserId");
+                        });
+
+                    b.Navigation("RefreshTokens");
                 });
 
             modelBuilder.Entity("LinkNest.Domain.Posts.Post", b =>
@@ -424,6 +451,17 @@ namespace LinkNest.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("LinkNest.Domain.UserProfiles.UserProfile", b =>
+                {
+                    b.HasOne("LinkNest.Domain.Identity.AppUser", "AppUser")
+                        .WithOne()
+                        .HasForeignKey("LinkNest.Domain.UserProfiles.UserProfile", "AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

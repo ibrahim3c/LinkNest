@@ -1,4 +1,4 @@
-﻿namespace LinkNest.Infrastructure.Abstraction
+﻿namespace LinkNest.Application.Abstraction.Helpers
 {
     public sealed class JWT
     {

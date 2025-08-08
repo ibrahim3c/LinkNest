@@ -8,6 +8,7 @@ namespace LinkNest.Application.UserProfiles.UpdateUserProfile
             string LastName,
             string Email,
             DateTime DateOfBirth,
-            string CurrentCity
+            string CurrentCity,
+            string PhoneNumber
          ) : ICommand;
 }
