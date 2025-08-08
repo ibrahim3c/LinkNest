@@ -41,7 +41,7 @@ namespace LinkNest.Application.UserProfiles.UpdateUserProfile
             if (user == null)
                 return Result.Failure(["No User Found"]);
 
-            var fullName = request.FirstName + " " + request.LastName;
+            var fullName = request.FirstName + request.LastName;
             if (appUser.UserName != fullName)
                 appUser.UserName = fullName;
 

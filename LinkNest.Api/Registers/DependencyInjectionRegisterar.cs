@@ -1,6 +1,9 @@
 ﻿
 using LinkNest.Application;
+using LinkNest.Application.Abstraction.Helpers;
 using LinkNest.Infrastructure;
+using Microsoft.Extensions.Configuration;
+using Serilog;
 
 namespace LinkNest.Api.Registers
 {
@@ -13,6 +16,15 @@ namespace LinkNest.Api.Registers
 
             builder.Services.AddApplicationLayer();
             builder.Services.AddInfrastructure(builder.Configuration);
+            //serilog;
+            builder.Host.UseSerilog((context, config) =>
+            {                              // read configs from appsettigns
+                config.ReadFrom.Configuration(context.Configuration);
+            });
+            //sendGrid
+            builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGridSettings")); 
+
+
         }
     }
 }

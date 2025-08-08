@@ -37,7 +37,7 @@ namespace LinkNest.Application.Identity.Register
             // Create a new user
             var user = new AppUser
             {
-                UserName = request.Fname +" "+ request.Lname, //TODO:
+                UserName = request.Fname + request.Lname, 
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
             };

@@ -1,7 +1,9 @@
-﻿namespace LinkNest.Application.Abstraction.IServices
+﻿using Microsoft.AspNetCore.Http;
+
+namespace LinkNest.Application.Abstraction.IServices
 {
     public interface IEmailService
     {
-        Task<string> SendAsync(string email, string v, string v1);
+        Task SendAsync(string mailTo, string subject, string body, IList<IFormFile> files = null);
     }
 }

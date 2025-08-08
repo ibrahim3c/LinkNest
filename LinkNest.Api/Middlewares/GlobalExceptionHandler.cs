@@ -4,13 +4,15 @@ namespace LinkNest.Api.Middlewares
 {
     public class GlobalExceptionHandler
     {
-        private RequestDelegate _next;
-        private ILogger<GlobalExceptionHandler> _logger;
+        private readonly RequestDelegate _next;
+        private readonly ILogger<GlobalExceptionHandler> _logger;
+
         public GlobalExceptionHandler(RequestDelegate next, ILogger<GlobalExceptionHandler> logger)
         {
             _next = next;
             _logger = logger;
         }
+
         public async Task Invoke(HttpContext httpContext)
         {
             try
@@ -19,6 +21,7 @@ namespace LinkNest.Api.Middlewares
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "An exception was thrown and handled in GlobalExceptionHandler.");
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
@@ -37,19 +40,19 @@ namespace LinkNest.Api.Middlewares
                 TimeoutException => ((int)HttpStatusCode.RequestTimeout, "The request timed out."),
                 NullReferenceException => ((int)HttpStatusCode.BadRequest, "A null reference occurred."),
                 LinkNest.Application.Abstraction.Excecption.ValidationException =>
-                                            ((int)HttpStatusCode.BadRequest, "Validation failed"),
+                    ((int)HttpStatusCode.BadRequest, "Validation failed"),
                 _ => ((int)HttpStatusCode.InternalServerError, "An unexpected error occurred.")
             };
 
-            _logger.LogError(ex, "Exception occurred: {Message} | Status Code: {StatusCode}",
+            _logger.LogError(ex, "Handled Exception: {Message} | Status Code: {StatusCode}",
                 message, statusCode);
-            context.Response.StatusCode = statusCode;
 
+            context.Response.StatusCode = statusCode;
 
             object response;
             if (ex is LinkNest.Application.Abstraction.Excecption.ValidationException validationEx)
             {
-                 response = new
+                response = new
                 {
                     StatusCode = statusCode,
                     Message = message,
@@ -62,12 +65,11 @@ namespace LinkNest.Api.Middlewares
             }
             else
             {
-
-                 response = new
+                response = new
                 {
                     StatusCode = statusCode,
                     Message = message,
-                    Detail = ex.Message // Hide this in production for security reasons
+                    Detail = ex.Message // ❗️احذر تظهر ده في production
                 };
             }
 

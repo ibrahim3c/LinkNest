@@ -94,6 +94,7 @@ namespace LinkNest.Infrastructure
 
             #region resolving
             services.AddScoped<ITokenGenerator, TokenGenerator>();
+            services.AddScoped<IEmailService, EmailService>();
 
             #endregion
 

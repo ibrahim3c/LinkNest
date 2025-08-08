@@ -3,6 +3,7 @@ using LinkNest.Domain.Abstraction;
 using LinkNest.Domain.Follows;
 using LinkNest.Domain.Identity;
 using LinkNest.Domain.Posts;
+using LinkNest.Domain.UserProfiles.DomainEvents;
 
 namespace LinkNest.Domain.UserProfiles
 {
@@ -49,10 +50,8 @@ namespace LinkNest.Domain.UserProfiles
             CurrentCity currentCity,
             string appUserId)
         {
-            //To Do - validate the parameters & error handling & raise domain events if needed
-
             var user = new UserProfile(Guid.NewGuid(), firstName, lastName, email,dateOfBirth,DateTime.UtcNow,currentCity,appUserId);
-            //user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
+            user.RaiseDomainEvent(new UserProfileCreatedDomainEvent(user.Guid));
             return user;
         }
         public void Update(FirstName firstName, LastName lastName, UserProfileEmail email, DateTime dateOfBirth, CurrentCity currentCity)

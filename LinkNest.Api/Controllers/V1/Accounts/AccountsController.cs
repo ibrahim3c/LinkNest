@@ -27,8 +27,9 @@ namespace LinkNest.Api.Controllers.V1.Accounts
             var command = new LoginCommand(request.Email,request.Password);
             var result = await sender.Send(command);
 
-            //set refresh token in response cookie
-            setRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiresOn);
+            if(!string.IsNullOrEmpty(result.RefreshToken))
+                 setRefreshTokenInCookie(result.RefreshToken, result.RefreshTokenExpiresOn);
+
             if (!result.Success)
                 return BadRequest(result);
             return Ok(result);
